@@ -1,10 +1,10 @@
-$(document).ready(onReady);
+$(document).ready(onReady); // jquery targets the doc, and runs when onReady function called.
 
-function onReady() {
-    $.ajax({
-        type: 'GET',
-        url: '/artist'
-    }).then(function (response) {
+function onReady() { 
+    $.ajax({         
+        type: 'GET', 
+        url: '/artist' 
+    }).then(function (response) { 
         for (let i = 0; i < response.length; i++) {
             let artist = response[i];
             $('#artistTableBody').append(`
@@ -12,6 +12,25 @@ function onReady() {
                     <td>${artist.name}</td>
                     <td>${artist.born}</td>
                     <td>${artist.died}</td>
+                </tr>
+            `);
+        }
+    });
+    
+    
+    $.ajax({         
+        type: 'GET', 
+        url: '/songs' 
+    }).then(function (response) { 
+        for (let i = 0; i < response.length; i++) {
+            let songs = response[i];
+            $('#songTableBody').append(`
+                <tr>
+                    <td>${songs.title}</td>
+                    <td>${songs.artist}</td>
+                    
+                    
+                    
                 </tr>
             `);
         }
